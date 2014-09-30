@@ -38,59 +38,6 @@
                                                                     //[/Comments]
 */
 
-class AppTable : public juce::Component, public TableListBoxModel
-{
-public:
-    AppTable()
-    {
-        numRows = 3;
-        addAndMakeVisible (table);
-        table.setModel (this);
-        
-        // give it a border
-        table.setColour (ListBox::outlineColourId, Colours::grey);
-        table.setOutlineThickness (1);
-        
-        table.getHeader().addColumn(L"col1", 1, 30);
-        table.getHeader().addColumn(L"col2", 2, 30);
-        
-    }
-    
-    // This is overloaded from TableListBoxModel, and must return the total number of rows in our table
-    int getNumRows() override
-    {
-        return numRows;
-    }
-
-    // This is overloaded from TableListBoxModel, and should fill in the background of the whole row
-    void paintRowBackground (Graphics& g, int /*rowNumber*/, int /*width*/, int /*height*/, bool rowIsSelected) override
-    {
-        if (rowIsSelected)
-            g.fillAll (Colours::lightblue);
-    }
-
-    // This is overloaded from TableListBoxModel, and must paint any cells that aren't using custom
-    // components.
-    void paintCell (Graphics& g, int rowNumber, int columnId,
-                    int width, int height, bool /*rowIsSelected*/) override
-    {
-        g.setColour (Colours::black);
-        //g.setFont (font);
-    
-        //const XmlElement* rowElement = dataList->getChildElement (rowNumber);
-    
-        const String text (L"Hello");
-        g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
-    
-        g.setColour (Colours::black.withAlpha (0.2f));
-        g.fillRect (width - 1, 0, 1, height);
-    }
-private:
-    TableListBox table;     // the table component itself
-    int numRows;
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AppTable)
-};
-
 
 class AboutComponent  : public juce::Component,
                         public ButtonListener

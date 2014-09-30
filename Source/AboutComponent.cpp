@@ -39,16 +39,9 @@ AboutComponent::AboutComponent ()
     //label->setColour (TextEditor::textColourId, Colours::black);
     //label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    //addAndMakeVisible (textButton = new TextButton ("new button"));
-    //textButton->addListener (this);
-
-    
-    
-    //table.setModel(grid);
-    //table.getHeader().addColumn(L"name", 1, 40);
-    //table.setBounds(10, 10, 400, 200);
-    //addAndMakeVisible(table);
-
+    addAndMakeVisible (textButton = new TextButton ("Install selected"));
+    textButton->setBounds(10, 230, 90, 25);
+    textButton->addListener (this);
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -75,18 +68,6 @@ AboutComponent::~AboutComponent()
     //[/Destructor]
 }
 
-/*
-void AboutComponent::metadataNotificationCompleted(const int resultCount)
-{
-    label->setText(String(resultCount), dontSendNotification);
-}
-*/
-
-void AboutComponent::metadataNotificationCompleted(const String &result)
-{
-    //label->setText(String(result), dontSendNotification);
-    
-}
 
 void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &resultArray)
 {
@@ -95,7 +76,10 @@ void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &res
     table.setModel(grid);
     table.getHeader().addColumn(L"Bundle Identifier", 1, 120);
     table.getHeader().addColumn(L"Bundle Path", 2, 380);
-    table.setBounds(10, 10, 400, 200);
+    // give it a border
+    table.setColour (ListBox::outlineColourId, Colours::grey);
+    table.setOutlineThickness (1);
+    table.setBounds(10, 10, 550, 200);
     addAndMakeVisible(table);
 
 }
@@ -122,8 +106,10 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
         
-        //interop.startMetadataQuery(this);
+        interop.nsLog(String(table.getSelectedRow()));
         //[/UserButtonCode_textButton]
+        
+        
     }
 
     //[UserbuttonClicked_Post]

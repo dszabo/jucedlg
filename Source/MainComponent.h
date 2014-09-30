@@ -31,7 +31,8 @@ public:
 
 private:
     //==============================================================================
-	TextButton buttonShow;
+	LookAndFeel_V3 lookAndFeelV3;
+    TextButton buttonShow;
 	ScopedPointer<Component> aboutComponent;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };

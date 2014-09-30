@@ -12,6 +12,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
+static NSString* juceStringToNS (const String& s)
+{
+    return [NSString stringWithUTF8String: s.toUTF8()];
+}
+
 static juce::String nsStringToJuce(NSString* s)
 {
     return CharPointer_UTF8([s UTF8String]);
@@ -34,10 +39,19 @@ NSInterop::~NSInterop()
     pimpl->query = nil;
 }
 
+void NSInterop::nsLog(const juce::String &message)
+{
+    NSLog(@"%@", juceStringToNS(message));
+}
+
 void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
 {
-    [pimpl->query setSearchScopes:@[@"/Applications"]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"];
+    //[pimpl->query setSearchScopes:@[@"/Applications"]];
+    
+    NSPredicate *predicate = [NSPredicate
+                                    predicateWithFormat:@"(kMDItemCFBundleIdentifier contains[cd] %@) AND (kMDItemKind == 'Application') AND (kMDItemExecutableArchitectures == 'x86_64')",
+                                    @"photoshop"];
+
     
     [pimpl->query setPredicate: predicate];
     [pimpl->query startQuery];

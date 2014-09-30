@@ -13,6 +13,7 @@
 //==============================================================================
 MainContentComponent::MainContentComponent() : buttonShow(L"Click me")
 {
+    LookAndFeel::setDefaultLookAndFeel(&lookAndFeelV3);
 	buttonShow.setBounds(10, 10, 80, 30);
 	buttonShow.addListener(this);
 	addAndMakeVisible(buttonShow);
@@ -43,19 +44,15 @@ void MainContentComponent::showToolWindow(ScopedPointer<Component>& ownerPointer
 		new FloatingToolWindow("Plugin Installer",
 			"",
 			new AboutComponent(), ownerPointer,
-			500, 300,
-			400, 200, 500, 300);
+			600, 300,
+			600, 300, 600, 300);
 	}
 }
 
 
 void MainContentComponent::paint (Graphics& g)
 {
-    g.fillAll (Colour (0xffeeddff));
-
-    g.setFont (Font (16.0f));
-    g.setColour (Colours::black);
-    g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
+    g.fillAll (Colours::white);
 }
 
 void MainContentComponent::resized()

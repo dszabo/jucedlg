@@ -106,7 +106,10 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
         
-        interop.nsLog(String(table.getSelectedRow()));
+        //interop.nsLog(String(table.getSelectedRow()));
+        if (table.getSelectedRow() >= 0) {
+            interop.nsLog(((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getBundlePath());
+        }
         //[/UserButtonCode_textButton]
         
         

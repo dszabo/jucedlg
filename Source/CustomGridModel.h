@@ -35,10 +35,12 @@ public:
     
     void metadataNotificationCompleted(const String &result);
     
+    OwnedArray<SearchResult> items;
+
+    
     
 private:
     int numOfRows;
-    OwnedArray<SearchResult> items;
     
     
 };

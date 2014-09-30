@@ -48,13 +48,15 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
 {
     [pimpl->query setSearchScopes:@[@"/Applications"]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"];
-    
     /*
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"];
+     */
+    
+    
     NSPredicate *predicate = [NSPredicate
                                     predicateWithFormat:@"(kMDItemCFBundleIdentifier contains[cd] %@) AND (kMDItemKind == 'Application') AND (kMDItemExecutableArchitectures == 'x86_64')",
                                     @"photoshop"];
-     */
+    
 
     
     [pimpl->query setPredicate: predicate];
@@ -71,10 +73,16 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
             NSUInteger i=0;
             for (i=0; i < [pimpl->query resultCount]; i++) {
                 NSMetadataItem *theResult = [pimpl->query resultAtIndex:i];
-                String bundleId = nsStringToJuce([theResult valueForAttribute:(NSString *)kMDItemCFBundleIdentifier]);
-                String bundlePath = nsStringToJuce([theResult valueForAttribute:(NSString *)kMDItemPath]);
-                //NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-                arr.add(new SearchResult(bundleId, bundlePath));
+                NSString *bundleId = [theResult valueForAttribute:(NSString *)kMDItemCFBundleIdentifier];
+                NSString *bundlePath = [theResult valueForAttribute:(NSString *)kMDItemPath];
+                NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+                NSString *bundleShortVersionString = [[bundle infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+                
+                arr.add(
+                        new SearchResult(nsStringToJuce(bundleId),
+                                         nsStringToJuce(bundlePath),
+                                         nsStringToJuce(bundleShortVersionString))
+                        );
             }
         
             nativeClass->metadataNotificationCompleted(arr);

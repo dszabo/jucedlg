@@ -8,7 +8,10 @@
 
 #include "SearchResult.h"
 
-SearchResult::SearchResult(const String &id, const String &path) : bundleId(id), bundlePath(path)
+SearchResult::SearchResult(const String &id, const String &path, const String &version) :
+    bundleId(id),
+    bundlePath(path),
+    bundleVersion(version)
 {
     
 }
@@ -25,4 +28,9 @@ String SearchResult::getBundleIdentifier()
 String SearchResult::getBundlePath()
 {
     return bundlePath;
+}
+
+String SearchResult::getBundleVersion()
+{
+    return bundleVersion;
 }

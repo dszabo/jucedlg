@@ -75,7 +75,8 @@ void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &res
     
     table.setModel(grid);
     table.getHeader().addColumn(L"Bundle Identifier", 1, 120);
-    table.getHeader().addColumn(L"Bundle Path", 2, 380);
+    table.getHeader().addColumn(L"Bundle Path", 2, 330);
+    table.getHeader().addColumn(L"Version", 3, 70);
     // give it a border
     table.setColour (ListBox::outlineColourId, Colours::grey);
     table.setOutlineThickness (1);

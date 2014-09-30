@@ -52,6 +52,11 @@ void CustomGridModel::paintCell(juce::Graphics &g, int rowNumber, int columnId, 
         text= items[rowNumber]->getBundlePath();
     }
     
+    if (columnId == 3)
+    {
+        text= items[rowNumber]->getBundleVersion();
+    }
+    
     g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);
     g.setColour (Colours::black.withAlpha (0.2f));
     g.fillRect (width - 1, 0, 1, height);

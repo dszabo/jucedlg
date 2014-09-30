@@ -21,7 +21,7 @@
 #define __JUCE_HEADER_6F5BC92BB0597534__
 
 //[Headers]     -- You can add your own extra header files here --
-#include "JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 #include "NSInterop.h"
 //[/Headers]
 
@@ -50,7 +50,8 @@ public:
     void paint (Graphics& g);
     void resized();
     void buttonClicked (Button* buttonThatWasClicked);
-    void metadataNotificationCompleted(const int resultCount);
+    //void metadataNotificationCompleted(const int resultCount);
+    void metadataNotificationCompleted(const String &result);
 
 
 
@@ -61,7 +62,7 @@ private:
     //==============================================================================
     ScopedPointer<Label> label;
     ScopedPointer<TextButton> textButton;
-    //NSInterop *interop;
+    NSInterop interop;
 
 
     //==============================================================================

@@ -6,10 +6,16 @@
 //
 //
 
-#include "NSInterop.h"
 #import <Cocoa/Cocoa.h>
-
+#include "NSInterop.h"
 #include "AboutComponent.h"
+#include "../JuceLibraryCode/JuceHeader.h"
+
+
+static juce::String nsStringToJuce(NSString* s)
+{
+    return CharPointer_UTF8([s UTF8String]);
+}
 
 class NSInterop::Private
 {
@@ -39,11 +45,16 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
     __block id misi;
     misi = [[NSNotificationCenter defaultCenter] addObserverForName:@"NSMetadataQueryDidFinishGatheringNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
             // do something with the result
-            int count = [pimpl->query resultCount];
+            //int count = [pimpl->query resultCount];
             [pimpl->query stopQuery];
             [[NSNotificationCenter defaultCenter] removeObserver:misi];
-               
-            nativeClass->metadataNotificationCompleted(count);
+        
+            //nativeClass->metadataNotificationCompleted(count);
+
+            NSString *res =
+            [[pimpl->query resultAtIndex:0] valueForAttribute:(NSString *)kMDItemCFBundleIdentifier];
+                const juce::String str = nsStringToJuce(res);
+            nativeClass->metadataNotificationCompleted(str);
      }];
     
 }

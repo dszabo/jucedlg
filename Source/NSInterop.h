@@ -19,9 +19,12 @@ public:
     NSInterop();
     ~NSInterop();
     void startMetadataQuery(AboutComponent *nativeClass);
+    
 private:
     class Private;
     Private *pimpl;
+    
+    
 };
 
 #endif /* defined(__DlgTest__NSInterop__) */

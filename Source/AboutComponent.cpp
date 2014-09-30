@@ -67,10 +67,18 @@ AboutComponent::~AboutComponent()
     //[/Destructor]
 }
 
+/*
 void AboutComponent::metadataNotificationCompleted(const int resultCount)
 {
     label->setText(String(resultCount), dontSendNotification);
 }
+*/
+
+void AboutComponent::metadataNotificationCompleted(const String &result)
+{
+    label->setText(String(result), dontSendNotification);
+}
+
 
 //==============================================================================
 void AboutComponent::paint (Graphics& g)
@@ -100,8 +108,8 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
-        NSInterop *interop = new NSInterop();
-        interop->startMetadataQuery(this);
+        
+        interop.startMetadataQuery(this);
         //[/UserButtonCode_textButton]
     }
 

@@ -21,6 +21,7 @@
 //[/Headers]
 
 #include "AboutComponent.h"
+#include "NSInterop.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -64,6 +65,11 @@ AboutComponent::~AboutComponent()
     //[/Destructor]
 }
 
+void AboutComponent::metadataNotificationCompleted(const int resultCount)
+{
+    label->setText(String(resultCount), dontSendNotification);
+}
+
 //==============================================================================
 void AboutComponent::paint (Graphics& g)
 {
@@ -92,6 +98,8 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
+        NSInterop *interop;
+        interop->startMetadataQuery(this);
         //[/UserButtonCode_textButton]
     }
 

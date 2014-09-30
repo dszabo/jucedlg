@@ -1,5 +1,5 @@
 #ifndef FLOATINGTOOLWINDOW_H_INCLUDED
-#define FLOATINGTOOLWINDOW
+#define FLOATINGTOOLWINDOW_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
@@ -17,21 +17,15 @@ public:
 		windowPosProperty(windowPosPropertyName),
 		owner(ownerPointer)
 	{
-		//setUsingNativeTitleBar(true);
-		setResizable(true, true);
-		setResizeLimits(minW, minH, maxW, maxH);
 		setContentOwned(content, false);
-
-		const String windowState(L"");
 		centreAroundComponent(Component::getCurrentlyFocusedComponent(), defaultW, defaultH);
-
 		setVisible(true);
 		owner = this;
 	}
 
 	~FloatingToolWindow()
 	{
-		//getGlobalProperties().setValue(windowPosProperty, getWindowStateAsString());
+		
 	}
 
 	void closeButtonPressed() override

@@ -34,7 +34,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class AboutComponent  : public Component,
+class AboutComponent  : public juce::Component,
                         public ButtonListener
 {
 public:
@@ -49,6 +49,7 @@ public:
     void paint (Graphics& g);
     void resized();
     void buttonClicked (Button* buttonThatWasClicked);
+    void metadataNotificationCompleted(const int resultCount);
 
 
 

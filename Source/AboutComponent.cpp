@@ -28,24 +28,32 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-AboutComponent::AboutComponent ()
+AboutComponent::AboutComponent ()  
 {
     //interop = new NSInterop();
-    addAndMakeVisible (label = new Label ("new label",
-                                          TRANS("label text")));
-    label->setFont (Font (15.00f, Font::plain));
-    label->setJustificationType (Justification::centredLeft);
-    label->setEditable (false, false, false);
-    label->setColour (TextEditor::textColourId, Colours::black);
-    label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    //addAndMakeVisible (label = new Label ("new label",
+    //                                      TRANS("label text")));
+    //label->setFont (Font (15.00f, Font::plain));
+    //label->setJustificationType (Justification::centredLeft);
+    //label->setEditable (false, false, false);
+    //label->setColour (TextEditor::textColourId, Colours::black);
+    //label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (textButton = new TextButton ("new button"));
-    textButton->addListener (this);
+    //addAndMakeVisible (textButton = new TextButton ("new button"));
+    //textButton->addListener (this);
+
+    
+    
+    //table.setModel(grid);
+    //table.getHeader().addColumn(L"name", 1, 40);
+    //table.setBounds(10, 10, 400, 200);
+    //addAndMakeVisible(table);
 
 
     //[UserPreSize]
     //[/UserPreSize]
 
+    interop.startMetadataQuery(this);
     setSize (400, 200);
 
 
@@ -76,7 +84,20 @@ void AboutComponent::metadataNotificationCompleted(const int resultCount)
 
 void AboutComponent::metadataNotificationCompleted(const String &result)
 {
-    label->setText(String(result), dontSendNotification);
+    //label->setText(String(result), dontSendNotification);
+    
+}
+
+void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &resultArray)
+{
+    grid = new CustomGridModel(resultArray);
+    
+    table.setModel(grid);
+    table.getHeader().addColumn(L"Bundle Identifier", 1, 120);
+    table.getHeader().addColumn(L"Bundle Path", 2, 380);
+    table.setBounds(10, 10, 400, 200);
+    addAndMakeVisible(table);
+
 }
 
 
@@ -92,14 +113,6 @@ void AboutComponent::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void AboutComponent::resized()
-{
-    label->setBounds (16, 16, 150, 24);
-    textButton->setBounds (240, 160, 150, 24);
-    //[UserResized] Add your own custom resize handling here..
-    //[/UserResized]
-}
-
 void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
@@ -109,7 +122,7 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
         
-        interop.startMetadataQuery(this);
+        //interop.startMetadataQuery(this);
         //[/UserButtonCode_textButton]
     }
 

@@ -36,6 +36,8 @@
 		EE6D4AAAE7BF4E8CCF59878E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A62FC95C114C338ECA7F0B /* CoreAudio.framework */; };
 		F2A7EBC519DAB6C2000DD58B /* FloatingToolWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBC319DAB6C2000DD58B /* FloatingToolWindow.cpp */; };
 		F2A7EBC819DABE95000DD58B /* NSInterop.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBC619DABE95000DD58B /* NSInterop.mm */; };
+		F2A7EBCE19DB04E8000DD58B /* CustomGridModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBCC19DB04E8000DD58B /* CustomGridModel.cpp */; };
+		F2A7EBD119DB15B1000DD58B /* SearchResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBCF19DB15B1000DD58B /* SearchResult.cpp */; };
 		F740674C728C29658D5E5F00 /* juce_data_structures.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1DF98310720066DA81CFF7B3 /* juce_data_structures.mm */; };
 		F77452C29246C7D517514716 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69EFFAAB8663913052DB8B9 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
@@ -865,6 +867,10 @@
 		F2A7EBC419DAB6C2000DD58B /* FloatingToolWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FloatingToolWindow.h; path = ../../Source/FloatingToolWindow.h; sourceTree = "<group>"; };
 		F2A7EBC619DABE95000DD58B /* NSInterop.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NSInterop.mm; path = ../../Source/NSInterop.mm; sourceTree = "<group>"; };
 		F2A7EBC719DABE95000DD58B /* NSInterop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInterop.h; path = ../../Source/NSInterop.h; sourceTree = "<group>"; };
+		F2A7EBCC19DB04E8000DD58B /* CustomGridModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CustomGridModel.cpp; path = ../../Source/CustomGridModel.cpp; sourceTree = "<group>"; };
+		F2A7EBCD19DB04E8000DD58B /* CustomGridModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomGridModel.h; path = ../../Source/CustomGridModel.h; sourceTree = "<group>"; };
+		F2A7EBCF19DB15B1000DD58B /* SearchResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SearchResult.cpp; path = ../../Source/SearchResult.cpp; sourceTree = "<group>"; };
+		F2A7EBD019DB15B1000DD58B /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchResult.h; path = ../../Source/SearchResult.h; sourceTree = "<group>"; };
 		F2F7272BF136824AFB0B03CE /* juce_BufferingAudioFormatReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_BufferingAudioFormatReader.cpp; path = ../../JuceLibraryCode/modules/juce_audio_formats/format/juce_BufferingAudioFormatReader.cpp; sourceTree = SOURCE_ROOT; };
 		F305DDAF3EF1E158E056CFCE /* juce_mac_AudioCDReader.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_AudioCDReader.mm; path = ../../JuceLibraryCode/modules/juce_audio_devices/native/juce_mac_AudioCDReader.mm; sourceTree = SOURCE_ROOT; };
 		F435E33E44D2AEC033369F96 /* juce_TextButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_TextButton.cpp; path = ../../JuceLibraryCode/modules/juce_gui_basics/buttons/juce_TextButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -971,6 +977,10 @@
 				39452FF4B88915467C7837BA /* Main.cpp */,
 				F2A7EBC619DABE95000DD58B /* NSInterop.mm */,
 				F2A7EBC719DABE95000DD58B /* NSInterop.h */,
+				F2A7EBCC19DB04E8000DD58B /* CustomGridModel.cpp */,
+				F2A7EBCD19DB04E8000DD58B /* CustomGridModel.h */,
+				F2A7EBCF19DB15B1000DD58B /* SearchResult.cpp */,
+				F2A7EBD019DB15B1000DD58B /* SearchResult.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -2688,7 +2698,9 @@
 				1C1CC582C2EECC90B6F0C6DC /* Main.cpp in Sources */,
 				2060D06CDCAA2C719BA8257A /* juce_audio_basics.mm in Sources */,
 				D5DC02680CC7E19595F86DB4 /* juce_audio_devices.mm in Sources */,
+				F2A7EBD119DB15B1000DD58B /* SearchResult.cpp in Sources */,
 				F2A7EBC819DABE95000DD58B /* NSInterop.mm in Sources */,
+				F2A7EBCE19DB04E8000DD58B /* CustomGridModel.cpp in Sources */,
 				2AE7BE5E64EC2DC0B1E5B0FA /* juce_audio_formats.mm in Sources */,
 				A2839029B93632AD1F00F582 /* juce_audio_processors.mm in Sources */,
 				6B2315589336C06D143657DD /* juce_core.mm in Sources */,

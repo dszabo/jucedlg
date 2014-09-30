@@ -44,17 +44,22 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
     
     __block id misi;
     misi = [[NSNotificationCenter defaultCenter] addObserverForName:@"NSMetadataQueryDidFinishGatheringNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
-            // do something with the result
-            //int count = [pimpl->query resultCount];
             [pimpl->query stopQuery];
             [[NSNotificationCenter defaultCenter] removeObserver:misi];
         
-            //nativeClass->metadataNotificationCompleted(count);
-
-            NSString *res =
-            [[pimpl->query resultAtIndex:0] valueForAttribute:(NSString *)kMDItemCFBundleIdentifier];
-                const juce::String str = nsStringToJuce(res);
-            nativeClass->metadataNotificationCompleted(str);
+        
+            OwnedArray<SearchResult> arr;
+        
+            NSUInteger i=0;
+            for (i=0; i < [pimpl->query resultCount]; i++) {
+                NSMetadataItem *theResult = [pimpl->query resultAtIndex:i];
+                String bundleId = nsStringToJuce([theResult valueForAttribute:(NSString *)kMDItemCFBundleIdentifier]);
+                String bundlePath = nsStringToJuce([theResult valueForAttribute:(NSString *)kMDItemPath]);
+                //NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+                arr.add(new SearchResult(bundleId, bundlePath));
+            }
+        
+            nativeClass->metadataNotificationCompleted(arr);
      }];
     
 }

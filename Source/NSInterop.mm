@@ -46,11 +46,15 @@ void NSInterop::nsLog(const juce::String &message)
 
 void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
 {
-    //[pimpl->query setSearchScopes:@[@"/Applications"]];
+    [pimpl->query setSearchScopes:@[@"/Applications"]];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"];
+    
+    /*
     NSPredicate *predicate = [NSPredicate
                                     predicateWithFormat:@"(kMDItemCFBundleIdentifier contains[cd] %@) AND (kMDItemKind == 'Application') AND (kMDItemExecutableArchitectures == 'x86_64')",
                                     @"photoshop"];
+     */
 
     
     [pimpl->query setPredicate: predicate];

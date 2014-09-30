@@ -39,8 +39,8 @@ AboutComponent::AboutComponent ()
     //label->setColour (TextEditor::textColourId, Colours::black);
     //label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    addAndMakeVisible (textButton = new TextButton ("Install selected"));
-    textButton->setBounds(10, 230, 90, 25);
+    addAndMakeVisible (textButton = new TextButton ("Install to selected"));
+    textButton->setBounds(10, 230, 120, 20);
     textButton->addListener (this);
 
     //[UserPreSize]

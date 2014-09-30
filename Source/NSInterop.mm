@@ -36,12 +36,14 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
     [pimpl->query setPredicate: predicate];
     [pimpl->query startQuery];
     
-    id misi = [[NSNotificationCenter defaultCenter] addObserverForName:@"NSMetadataQueryDidFinishGatheringNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+    __block id misi;
+    misi = [[NSNotificationCenter defaultCenter] addObserverForName:@"NSMetadataQueryDidFinishGatheringNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
             // do something with the result
             int count = [pimpl->query resultCount];
-            nativeClass->metadataNotificationCompleted(count);
             [pimpl->query stopQuery];
             [[NSNotificationCenter defaultCenter] removeObserver:misi];
+               
+            nativeClass->metadataNotificationCompleted(count);
      }];
     
 }

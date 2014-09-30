@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2013
+Project("{D0481A19-387F-5E21-E571-EB8E561E7E3E}") = "DlgTest", "DlgTest.vcxproj", "{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|Win32.Build.0 = Debug|Win32
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|Win32.ActiveCfg = Release|Win32
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

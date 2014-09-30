@@ -21,7 +21,7 @@
 //[/Headers]
 
 #include "AboutComponent.h"
-#include "NSInterop.h"
+
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -30,6 +30,7 @@
 //==============================================================================
 AboutComponent::AboutComponent ()
 {
+    //interop = new NSInterop();
     addAndMakeVisible (label = new Label ("new label",
                                           TRANS("label text")));
     label->setFont (Font (15.00f, Font::plain));
@@ -59,6 +60,7 @@ AboutComponent::~AboutComponent()
 
     label = nullptr;
     textButton = nullptr;
+    //delete interop;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -98,7 +100,7 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         //[UserButtonCode_textButton] -- add your button handler code here..
-        NSInterop *interop;
+        NSInterop *interop = new NSInterop();
         interop->startMetadataQuery(this);
         //[/UserButtonCode_textButton]
     }

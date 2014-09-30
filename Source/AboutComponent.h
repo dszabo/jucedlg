@@ -22,6 +22,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
+#include "NSInterop.h"
 //[/Headers]
 
 
@@ -60,6 +61,7 @@ private:
     //==============================================================================
     ScopedPointer<Label> label;
     ScopedPointer<TextButton> textButton;
+    //NSInterop *interop;
 
 
     //==============================================================================

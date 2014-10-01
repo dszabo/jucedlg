@@ -12,12 +12,12 @@ public TableListBoxModel
 {
 public:
     int getNumRows();
-    CustomGridModel(OwnedArray<SearchResult> &resultArray);
+    CustomGridModel(OwnedArray<AppSearchResult> &resultArray);
     ~CustomGridModel();
     void paintRowBackground (Graphics& g, int rowNumber, int width, int height, bool rowIsSelected);
     void paintCell (Graphics& g, int rowNumber, int columnId, int width, int height, bool rowIsSelected) ;
     void metadataNotificationCompleted(const String &result);
-    OwnedArray<SearchResult> items;
+    OwnedArray<AppSearchResult> items;
 
 private:
     int numOfRows;

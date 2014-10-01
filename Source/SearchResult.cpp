@@ -1,27 +1,27 @@
 #include "SearchResult.h"
 
-SearchResult::SearchResult(const String &id, const String &path, const String &version) :
-    bundleId(id),
-    bundlePath(path),
-    bundleVersion(version)
+AppSearchResult::AppSearchResult(const String &id, const String &path, const String &version) :
+    appId(id),
+    appPath(path),
+    appVersion(version)
 {
 }
 
-SearchResult::~SearchResult()
+AppSearchResult::~AppSearchResult()
 {
 }
 
-String SearchResult::getBundleIdentifier()
+String AppSearchResult::getAppIdentifier()
 {
-    return bundleId;
+    return appId;
 }
 
-String SearchResult::getBundlePath()
+String AppSearchResult::getAppPath()
 {
-    return bundlePath;
+    return appPath;
 }
 
-String SearchResult::getBundleVersion()
+String AppSearchResult::getAppVersion()
 {
-    return bundleVersion;
+    return appVersion;
 }

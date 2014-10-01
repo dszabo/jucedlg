@@ -5,6 +5,7 @@ AboutComponent::AboutComponent ()
     addAndMakeVisible (textButton = new TextButton ("Install to selected"));
     textButton->setBounds(10, 230, 120, 20);
     textButton->addListener (this);
+    textButton->setEnabled(false);
 
     interop.startMetadataQuery(this);
     setSize (400, 200);
@@ -17,7 +18,8 @@ AboutComponent::~AboutComponent()
     textButton = nullptr;
 }
 
-void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &resultArray)
+#ifdef JUCE_MAC
+void AboutComponent::metadataNotificationCompleted(OwnedArray<AppSearchResult> &resultArray)
 {
     grid = new CustomGridModel(resultArray);
     
@@ -30,8 +32,12 @@ void AboutComponent::metadataNotificationCompleted(OwnedArray<SearchResult> &res
     table.setOutlineThickness (1);
     table.setBounds(10, 10, 550, 200);
     addAndMakeVisible(table);
-
+    
+    if (table.getNumRows() > 0) {
+        textButton->setEnabled(true);
+    }
 }
+#endif
 
 void AboutComponent::paint (Graphics& g)
 {
@@ -43,14 +49,14 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         if (table.getSelectedRow() >= 0) {
-            String appPath = ((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getBundlePath();
+            String appPath = ((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getAppPath();
             File f(appPath);
             File parentDir = f.getParentDirectory();
             File targetFile = File(parentDir.getFullPathName() + L"/Plug-ins/MockTextFile.txt");
             
             File currentAppPath = File::getSpecialLocation(File::currentApplicationFile);
             File sourceFileToCopy = File(currentAppPath.getFullPathName() + L"/Contents/Resources/MockTextFile.txt");
-            interop.nsLog(sourceFileToCopy.getFullPathName());
+            //interop.nsLog(sourceFileToCopy.getFullPathName());
             
             if (sourceFileToCopy.copyFileTo(targetFile))
             {
@@ -60,7 +66,6 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
             {
                 AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, L"Copy plugin", L"Plugin copy to Photoshop plugin folder has failed");
             }
-            
         }
     }
 }

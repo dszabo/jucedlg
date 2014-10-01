@@ -56,7 +56,7 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
             [[NSNotificationCenter defaultCenter] removeObserver:misi];
         
         
-            OwnedArray<SearchResult> arr;
+            OwnedArray<AppSearchResult> arr;
         
             NSUInteger i=0;
             for (i=0; i < [pimpl->query resultCount]; i++) {
@@ -67,7 +67,7 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
                 NSString *bundleShortVersionString = [[bundle infoDictionary] objectForKey:@"CFBundleShortVersionString"];
                 
                 arr.add(
-                        new SearchResult(nsStringToJuce(bundleId),
+                        new AppSearchResult(nsStringToJuce(bundleId),
                                          nsStringToJuce(bundlePath),
                                          nsStringToJuce(bundleShortVersionString))
                         );

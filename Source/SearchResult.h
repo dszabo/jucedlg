@@ -3,18 +3,18 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class SearchResult
+class AppSearchResult
 {
 public:
-    SearchResult(const String &id, const String &path, const String &version);
-    ~SearchResult();
-    juce::String getBundleIdentifier();
-    juce::String getBundlePath();
-    juce::String getBundleVersion();
+    AppSearchResult(const String &id, const String &path, const String &version);
+    ~AppSearchResult();
+    juce::String getAppIdentifier();
+    juce::String getAppPath();
+    juce::String getAppVersion();
 private:
-    String bundleId;
-    String bundlePath;
-    String bundleVersion;
+    String appId;
+    String appPath;
+    String appVersion;
 };
 
 #endif

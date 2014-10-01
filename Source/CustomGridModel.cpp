@@ -1,6 +1,6 @@
 #include "CustomGridModel.h"
 
-CustomGridModel::CustomGridModel(OwnedArray<SearchResult> &resultArray)
+CustomGridModel::CustomGridModel(OwnedArray<AppSearchResult> &resultArray)
 {
     numOfRows = resultArray.size();
     items.addCopiesOf(resultArray);
@@ -25,17 +25,17 @@ void CustomGridModel::paintCell(juce::Graphics &g, int rowNumber, int columnId, 
     String text;
     if (columnId == 1)
     {
-        text= items[rowNumber]->getBundleIdentifier();
+        text= items[rowNumber]->getAppIdentifier();
     }
 
     if (columnId == 2)
     {
-        text= items[rowNumber]->getBundlePath();
+        text= items[rowNumber]->getAppPath();
     }
     
     if (columnId == 3)
     {
-        text= items[rowNumber]->getBundleVersion();
+        text= items[rowNumber]->getAppVersion();
     }
     
     g.drawText (text, 2, 0, width - 4, height, Justification::centredLeft, true);

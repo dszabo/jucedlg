@@ -16,6 +16,9 @@ public:
     ~AboutComponent();
     void paint (Graphics& g);
     void buttonClicked (Button* buttonThatWasClicked);
+#ifdef JUCE_MSVC
+	void fillTableWindows();
+#endif
 #ifdef JUCE_MAC
     void metadataNotificationCompleted(OwnedArray<AppSearchResult> &resultArray);
 #endif

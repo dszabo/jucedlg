@@ -1425,6 +1425,12 @@
     <ClCompile Include="..\..\Source\FloatingToolWindow.cpp">
       <Filter>DlgTest\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CustomGridModel.cpp">
+      <Filter>DlgTest\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SearchResult.cpp">
+      <Filter>DlgTest\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\AboutComponent.h">
@@ -2751,6 +2757,12 @@
       <Filter>Juce Library Code</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FloatingToolWindow.h">
+      <Filter>DlgTest\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CustomGridModel.h">
+      <Filter>DlgTest\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SearchResult.h">
       <Filter>DlgTest\Source</Filter>
     </ClInclude>
   </ItemGroup>

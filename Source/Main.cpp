@@ -1,6 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
+
 class DlgTestApplication  : public JUCEApplication
 {
 public:
@@ -12,17 +13,14 @@ public:
 
     void initialise (const String& commandLine) override
     {
-        // This method is where you should put your application's initialisation code..
         mainWindow = new MainWindow();
     }
 
     void shutdown() override
     {
-        // Add your application's shutdown code here..
         mainWindow = nullptr; // (deletes our window)
     }
 
-    //==============================================================================
     void systemRequestedQuit() override
     {
         quit();
@@ -46,6 +44,7 @@ public:
         }
 
         void closeButtonPressed()
+        {
             JUCEApplication::getInstance()->systemRequestedQuit();
         }
 

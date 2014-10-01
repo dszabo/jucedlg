@@ -1,11 +1,3 @@
-//
-//  SearchResult.h
-//  DlgTest
-//
-//  Created by Daniel Szabo on 30/09/14.
-//
-//
-
 #ifndef __DlgTest__SearchResult__
 #define __DlgTest__SearchResult__
 
@@ -25,4 +17,4 @@ private:
     String bundleVersion;
 };
 
-#endif /* defined(__DlgTest__SearchResult__) */
+#endif

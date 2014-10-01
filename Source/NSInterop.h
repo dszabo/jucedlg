@@ -1,11 +1,3 @@
-//
-//  NSInterop.h
-//  DlgTest
-//
-//  Created by Daniel Szabo on 30/09/14.
-//
-//
-
 #ifndef __DlgTest__NSInterop__
 #define __DlgTest__NSInterop__
 
@@ -28,4 +20,4 @@ private:
     
 };
 
-#endif /* defined(__DlgTest__NSInterop__) */
+#endif 

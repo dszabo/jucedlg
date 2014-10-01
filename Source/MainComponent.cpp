@@ -1,16 +1,6 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-  ==============================================================================
-*/
-
 #include "MainComponent.h"
 #include "FloatingToolWindow.h"
 
-
-//==============================================================================
 MainContentComponent::MainContentComponent() : buttonShow(L"Click me")
 {
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeelV3);
@@ -49,7 +39,6 @@ void MainContentComponent::showToolWindow(ScopedPointer<Component>& ownerPointer
 	}
 }
 
-
 void MainContentComponent::paint (Graphics& g)
 {
     g.fillAll (Colours::white);
@@ -57,7 +46,4 @@ void MainContentComponent::paint (Graphics& g)
 
 void MainContentComponent::resized()
 {
-    // This is called when the MainContentComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
 }

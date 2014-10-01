@@ -1,16 +1,7 @@
-//
-//  NSInterop.cpp
-//  DlgTest
-//
-//  Created by Daniel Szabo on 30/09/14.
-//
-//
-
 #import <Cocoa/Cocoa.h>
 #include "NSInterop.h"
 #include "AboutComponent.h"
 #include "../JuceLibraryCode/JuceHeader.h"
-
 
 static NSString* juceStringToNS (const String& s)
 {
@@ -52,12 +43,9 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"];
      */
     
-    
     NSPredicate *predicate = [NSPredicate
                                     predicateWithFormat:@"(kMDItemCFBundleIdentifier contains[cd] %@) AND (kMDItemKind == 'Application') AND (kMDItemExecutableArchitectures == 'x86_64')",
                                     @"photoshop"];
-    
-
     
     [pimpl->query setPredicate: predicate];
     [pimpl->query startQuery];
@@ -87,5 +75,4 @@ void NSInterop::startMetadataQuery(AboutComponent* nativeClass)
         
             nativeClass->metadataNotificationCompleted(arr);
      }];
-    
 }

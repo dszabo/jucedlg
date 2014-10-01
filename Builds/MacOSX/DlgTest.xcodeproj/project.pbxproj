@@ -34,6 +34,7 @@
 		D5DC02680CC7E19595F86DB4 /* juce_audio_devices.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2EC3A8CF2B3E3C273854D4B /* juce_audio_devices.mm */; };
 		DF989C70D032C24C385C906C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2969E52684CCB77902CDF7D8 /* Accelerate.framework */; };
 		EE6D4AAAE7BF4E8CCF59878E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A62FC95C114C338ECA7F0B /* CoreAudio.framework */; };
+		F253B7B819DC0B20001C437A /* MockTextFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = F253B7B619DC0B20001C437A /* MockTextFile.txt */; };
 		F2A7EBC519DAB6C2000DD58B /* FloatingToolWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBC319DAB6C2000DD58B /* FloatingToolWindow.cpp */; };
 		F2A7EBC819DABE95000DD58B /* NSInterop.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBC619DABE95000DD58B /* NSInterop.mm */; };
 		F2A7EBCE19DB04E8000DD58B /* CustomGridModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2A7EBCC19DB04E8000DD58B /* CustomGridModel.cpp */; };
@@ -861,6 +862,7 @@
 		F0B93928D37A02A38BF97725 /* juce_WindowsMediaAudioFormat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_WindowsMediaAudioFormat.cpp; path = ../../JuceLibraryCode/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.cpp; sourceTree = SOURCE_ROOT; };
 		F1D7ABBFFCEDEA72F4944677 /* juce_ios_Windowing.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_ios_Windowing.mm; path = ../../JuceLibraryCode/modules/juce_gui_basics/native/juce_ios_Windowing.mm; sourceTree = SOURCE_ROOT; };
 		F2046BF30B5F970C2B5EABCE /* juce_Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Path.h; path = ../../JuceLibraryCode/modules/juce_graphics/geometry/juce_Path.h; sourceTree = SOURCE_ROOT; };
+		F253B7B619DC0B20001C437A /* MockTextFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MockTextFile.txt; path = ../../Source/MockTextFile.txt; sourceTree = "<group>"; };
 		F29336441E338AA1601C76DA /* juce_Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Random.h; path = ../../JuceLibraryCode/modules/juce_core/maths/juce_Random.h; sourceTree = SOURCE_ROOT; };
 		F29C18998D6FFEE1A4B54B96 /* juce_module_info */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_module_info; path = ../../JuceLibraryCode/modules/juce_graphics/juce_module_info; sourceTree = SOURCE_ROOT; };
 		F2A7EBC319DAB6C2000DD58B /* FloatingToolWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FloatingToolWindow.cpp; path = ../../Source/FloatingToolWindow.cpp; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 				F2A7EBCD19DB04E8000DD58B /* CustomGridModel.h */,
 				F2A7EBCF19DB15B1000DD58B /* SearchResult.cpp */,
 				F2A7EBD019DB15B1000DD58B /* SearchResult.h */,
+				F253B7B619DC0B20001C437A /* MockTextFile.txt */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -2682,6 +2685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F762D0B85C922871F395C4F /* RecentFilesMenuTemplate.nib in Resources */,
+				F253B7B819DC0B20001C437A /* MockTextFile.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,4 @@
-//
-//  CustomGridModel.cpp
-//  JuceTable
-//
-//  Created by Daniel Szabo on 30/09/14.
-//
-//
-
 #include "CustomGridModel.h"
-
-CustomGridModel::CustomGridModel(int rows) : numOfRows(rows)
-{
-    
-    
-}
 
 CustomGridModel::CustomGridModel(OwnedArray<SearchResult> &resultArray)
 {
@@ -23,11 +9,6 @@ CustomGridModel::CustomGridModel(OwnedArray<SearchResult> &resultArray)
 CustomGridModel::~CustomGridModel()
 {
     
-}
-
-void CustomGridModel::metadataNotificationCompleted(const juce::String &result)
-{
-    numOfRows = result.length();
 }
 
 int CustomGridModel::getNumRows()

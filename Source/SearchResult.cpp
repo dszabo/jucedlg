@@ -1,11 +1,3 @@
-//
-//  SearchResult.cpp
-//  DlgTest
-//
-//  Created by Daniel Szabo on 30/09/14.
-//
-//
-
 #include "SearchResult.h"
 
 SearchResult::SearchResult(const String &id, const String &path, const String &version) :
@@ -13,7 +5,6 @@ SearchResult::SearchResult(const String &id, const String &path, const String &v
     bundlePath(path),
     bundleVersion(version)
 {
-    
 }
 
 SearchResult::~SearchResult()

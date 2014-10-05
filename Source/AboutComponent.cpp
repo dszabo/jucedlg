@@ -83,7 +83,7 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         if (table.getSelectedRow() >= 0) {
-
+#ifdef JUCE_MSVC
 			String targetFile = ((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getAppPath();
 
 			TCHAR buf[MAX_PATH];
@@ -111,7 +111,7 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
 				}
 			}
 
-#ifdef JUCE_MSVC
+
 
 #endif
 

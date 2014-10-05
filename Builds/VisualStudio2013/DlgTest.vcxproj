@@ -19,12 +19,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
@@ -85,6 +87,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\DlgTest.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)\..\..\Source\MockTextFile.txt $(OutDir)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -127,6 +132,9 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>$(IntDir)\DlgTest.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)\..\..\Source\MockTextFile.txt $(OutDir)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\AboutComponent.cpp" />
@@ -1227,6 +1235,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_gui_extra.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_opengl\juce_opengl.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_video\juce_video.cpp" />
+    <ClCompile Include="..\..\Source\RegSearcher.cpp" />
     <ClCompile Include="..\..\Source\SearchResult.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -1673,6 +1682,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_video\juce_video.h" />
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
+    <ClInclude Include="..\..\Source\RegSearcher.h" />
     <ClInclude Include="..\..\Source\SearchResult.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1692,6 +1702,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Source\MockTextFile.txt">
+      <DeploymentContent>true</DeploymentContent>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

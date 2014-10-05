@@ -1,7 +1,9 @@
 #include "AboutComponent.h"
 
 #ifdef JUCE_MSVC
-#include <Windows.h>
+#include "RegSearcher.h"
+#include <tchar.h>
+#include <Shlwapi.h>
 #endif
 
 AboutComponent::AboutComponent ()
@@ -30,60 +32,23 @@ AboutComponent::~AboutComponent()
 #ifdef JUCE_MSVC
 void AboutComponent::fillTableWindows()
 {
+	RegSearcher regSearcher;
+	grid = new CustomGridModel(regSearcher.getSearchResults());
 
-	#define MAX_KEY_LENGTH 255
-	#define MAX_VALUE_NAME 16383
+	table.setModel(grid);
+	table.getHeader().addColumn(L"App path", 1, 120);
+	table.getHeader().addColumn(L"Plugin Path", 2, 330);
+	table.getHeader().addColumn(L"Version", 3, 70);
+	// give it a border
+	table.setColour (ListBox::outlineColourId, Colours::grey);
+	table.setOutlineThickness (1);
+	table.setBounds(10, 10, 550, 200);
+	addAndMakeVisible(table);
 
-	HKEY hTEstKey;
-	if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Adobe\\Photoshop"), 0, KEY_READ, &hTEstKey) == ERROR_SUCCESS) {
-		TCHAR    achKey[MAX_KEY_LENGTH];			// buffer for subkey name
-		DWORD    cbName;							// size of name string 
-		TCHAR    achClass[MAX_PATH] = TEXT("");		// buffer for class name 
-		DWORD    cchClassName = MAX_PATH;			// size of class string 
-		DWORD    cSubKeys = 0;						// number of subkeys 
-		DWORD    cbMaxSubKey;						// longest subkey size 
-		DWORD    cchMaxClass;						// longest class string 
-		DWORD    cValues;							// number of values for key 
-		DWORD    cchMaxValue;						// longest value name 
-		DWORD    cbMaxValueData;					// longest value data 
-		DWORD    cbSecurityDescriptor;				// size of security descriptor 
-		FILETIME ftLastWriteTime;					// last write time 
-
-		DWORD i, retCode;
-
-		TCHAR  achValue[MAX_VALUE_NAME];
-		DWORD cchValue = MAX_VALUE_NAME;
-
-		retCode = RegQueryInfoKey(
-			hTEstKey,                // key handle 
-			achClass,                // buffer for class name 
-			&cchClassName,           // size of class string 
-			NULL,                    // reserved 
-			&cSubKeys,               // number of subkeys 
-			&cbMaxSubKey,            // longest subkey size 
-			&cchMaxClass,            // longest class string 
-			&cValues,                // number of values for this key 
-			&cchMaxValue,            // longest value name 
-			&cbMaxValueData,         // longest value data 
-			&cbSecurityDescriptor,   // security descriptor 
-			&ftLastWriteTime);       // last write time 
-
-		if (cSubKeys) {
-			for (auto i = 0; i < cSubKeys; i++) {
-				cbName = MAX_KEY_LENGTH;
-				retCode = RegEnumKeyEx(hTEstKey, i, achKey, &cbName, NULL, NULL, NULL, &ftLastWriteTime);
-				if (retCode == ERROR_SUCCESS)
-				{
-					OutputDebugString(achKey);
-				}
-
-			}
-		}
-
+	if (table.getNumRows() > 0) {
+		textButton->setEnabled(true);
 	}
 
-	RegCloseKey(hTEstKey);
-	
 }
 #endif
 
@@ -118,6 +83,39 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == textButton)
     {
         if (table.getSelectedRow() >= 0) {
+
+			String targetFile = ((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getAppPath();
+
+			TCHAR buf[MAX_PATH];
+			if (targetFile.length() + _tcslen(_T("MockTextFile.txt")) >= MAX_PATH)
+			{
+				// path is too long
+				AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, _T("Copy plugin"), _T("Path is too long!"));
+				return;
+			}
+			if (NULL != PathCombine(buf, targetFile.toWideCharPointer(), _T("MockTextFile.txt")))
+			{
+				String targetFileToCopy(buf);
+				File sourceDir = File::getSpecialLocation(File::SpecialLocationType::currentExecutableFile).getParentDirectory();
+				String sourceFile(sourceDir.getFullPathName());
+				sourceFile << _T("\\MockTextFile.txt");
+				File sourceFileToCopy(sourceFile);
+
+				if (sourceFileToCopy.copyFileTo(targetFileToCopy))
+				{
+					AlertWindow::showMessageBox(AlertWindow::AlertIconType::InfoIcon, _T("Copy plugin"), _T("Plugin copied to Photoshop plugin folder successfully"));
+				}
+				else
+				{
+					AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, _T("Copy plugin"), _T("Plugin copy to Photoshop plugin folder has failed"));
+				}
+			}
+
+#ifdef JUCE_MSVC
+
+#endif
+
+#ifdef JUCE_MAC
             String appPath = ((CustomGridModel *)table.getModel())->items[table.getSelectedRow()]->getAppPath();
             File f(appPath);
             File parentDir = f.getParentDirectory();
@@ -135,6 +133,7 @@ void AboutComponent::buttonClicked (Button* buttonThatWasClicked)
             {
                 AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, L"Copy plugin", L"Plugin copy to Photoshop plugin folder has failed");
             }
+#endif
         }
     }
 }

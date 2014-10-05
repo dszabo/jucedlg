@@ -1431,6 +1431,9 @@
     <ClCompile Include="..\..\Source\SearchResult.cpp">
       <Filter>DlgTest\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\RegSearcher.cpp">
+      <Filter>DlgTest\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\AboutComponent.h">
@@ -2765,6 +2768,9 @@
     <ClInclude Include="..\..\Source\SearchResult.h">
       <Filter>DlgTest\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\RegSearcher.h">
+      <Filter>DlgTest\Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
@@ -2811,5 +2817,10 @@
     <ResourceCompile Include=".\resources.rc">
       <Filter>Juce Library Code</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Source\MockTextFile.txt">
+      <Filter>DlgTest\Source</Filter>
+    </Text>
   </ItemGroup>
 </Project>

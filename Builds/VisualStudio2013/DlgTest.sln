@@ -1,17 +1,25 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-Project("{D0481A19-387F-5E21-E571-EB8E561E7E3E}") = "DlgTest", "DlgTest.vcxproj", "{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}"
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlgTest", "DlgTest.vcxproj", "{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|Win32.ActiveCfg = Debug|Win32
 		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|Win32.Build.0 = Debug|Win32
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|x64.ActiveCfg = Debug|x64
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Debug|x64.Build.0 = Debug|x64
 		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|Win32.ActiveCfg = Release|Win32
 		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|Win32.Build.0 = Release|Win32
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|x64.ActiveCfg = Release|x64
+		{1A289FE0-31C8-D7DC-DA49-BB4A5127E909}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
